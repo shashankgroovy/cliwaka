@@ -1,0 +1,6 @@
+# python
+*.pyc
+
+# Vim swap files
+*.swp
+*.swo
