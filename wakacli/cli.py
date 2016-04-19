@@ -9,14 +9,12 @@ from output import pretty_output
 
 BASE_URL = 'https://wakatime.com/api/v1/'
 
-# get the current user
 resource_endpoints = {
-    'current_user': 'users/current',
     'stats': '/stats/last_7_days',
     'summaries' : '/summaries',
     'durations': '/durations',
     'hearbeats': '/heartbeats'
-}
+    }
 
 def get_user(user="current"):
     """Returns a specific users information and returns the current user by
@@ -38,7 +36,7 @@ def get_durations(date=None, project="", branches=""):
         import datetime
         date = str(datetime.date.today())
 
-    endpoint = resource_endpoints['durations']
+    endpoint = 'durations'
     params = {'date': date}
     make_request(endpoint, params)
 
@@ -46,23 +44,27 @@ def request_heartbeats():
     """Returns current users information"""
     pass
 
-def make_request(params={}, endpoint="current_user"):
+def make_request(endpoint="", params={}, user="current", leader=False):
     """Generic request wrapper for routing all requests to api"""
 
-    print "Requesting data"
-    if config.get_config('api_key'):
-        print "API key found."
-        API_KEY = config.get_config('api_key')
-    else:
-        print "API key not found."
-        API_KEY = config.setup_config()
+    print "Requesting data..."
+    API_KEY = config.get_config('api_key') or config.setup_config()
 
     # make the request parameters and endpoint ready
     params["api_key"] = API_KEY
-    endpoint = resource_endpoints[endpoint]
 
-    r = requests.get(BASE_URL + endpoint, params=params)
-    print pretty_output(json.dumps(r.json()))
+    if leader == False:
+        user_type = 'users/' + user
+
+        if resource_endpoints.has_key(endpoint):
+            endpoint = resource_endpoints[endpoint]
+
+        r = requests.get(BASE_URL + user_type + endpoint, params=params)
+        print pretty_output(json.dumps(r.json()))
+
+    else:
+        r = requests.get(BASE_URL + 'leaders')
+        print pretty_output(json.dumps(r.json()))
 
 
 # handle SIGINT
