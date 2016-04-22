@@ -10,7 +10,7 @@ from output import pretty_output
 BASE_URL = 'https://wakatime.com/api/v1/'
 
 resource_endpoints = {
-    'stats': '/stats/last_7_days',
+    'stats': '/stats',
     'summaries' : '/summaries',
     'durations': '/durations',
     'heartbeats': '/heartbeats',
@@ -30,17 +30,29 @@ def view_leaderboard():
     A list of users ranked by logged time in descending order."""
     make_request(leader=True)
 
-def get_stats():
+def get_stats(timeout="week", project=""):
     """Returns user's stats and logged time for the given time range.
 
     Allowed time ranges are:
-        last_7_days,            # only a weeks stat is available for free accounts
-        last_30_days,
-        last_6_months,
-        last_year,
-        all_time
+        week: last_7_days,            # only a weeks stat is available for free accounts
+        month: last_30_days,
+        half-year: last_6_months,
+        last-year: last_year,
+        all: all_time
     """
-    pass
+    time_range = {
+        'week': '/last_7_days',
+        'month': '/last_30_days',
+        'half-year': '/last_6_months',
+        'last-year': '/last_year',
+        'all': '/all_time'
+    }
+    endpoint = 'stats'
+    sub_res = time_range[timeout]
+    params = {
+        'project': project
+    }
+    make_request(endpoint, sub_res, params)
 
 def get_summaries(start=None, end=None, project="", branches=""):
     """Returns a user's logged time for the given time range as an array of
@@ -93,7 +105,7 @@ def get_user_agents():
     endpoint = 'user_agents'
     make_request(endpoint)
 
-def make_request(endpoint="", params={}, user="current", leader=False):
+def make_request(endpoint="", sub_res="", params={}, user="current", leader=False):
     """Generic request wrapper for routing all requests to api"""
 
     print "Requesting data..."
@@ -108,7 +120,7 @@ def make_request(endpoint="", params={}, user="current", leader=False):
         if resource_endpoints.has_key(endpoint):
             endpoint = resource_endpoints[endpoint]
 
-        r = requests.get(BASE_URL + user_type + endpoint, params=params)
+        r = requests.get(BASE_URL + user_type + endpoint + sub_res, params=params)
 
         if r.status_code == 200:
             print pretty_output(json.dumps(r.json()))
