@@ -52,7 +52,7 @@ def get_stats(timeout="week", project=""):
     params = {
         'project': project
     }
-    make_request(endpoint, sub_res, params)
+    make_request(endpoint, params, sub_res)
 
 def get_summaries(start=None, end=None, project="", branches=""):
     """Returns a user's logged time for the given time range as an array of
@@ -105,7 +105,7 @@ def get_user_agents():
     endpoint = 'user_agents'
     make_request(endpoint)
 
-def make_request(endpoint="", sub_res="", params={}, user="current", leader=False):
+def make_request(endpoint="", params={}, sub_res="", user="current", leader=False):
     """Generic request wrapper for routing all requests to api"""
 
     print "Requesting data..."
@@ -120,32 +120,18 @@ def make_request(endpoint="", sub_res="", params={}, user="current", leader=Fals
         if resource_endpoints.has_key(endpoint):
             endpoint = resource_endpoints[endpoint]
 
-        r = requests.get(BASE_URL + user_type + endpoint + sub_res, params=params)
+        try:
+            r = requests.get(BASE_URL + user_type + endpoint + sub_res, params=params)
 
-        if r.status_code == 200:
-            print pretty_output(json.dumps(r.json()))
-        elif r.status_code == 403:
-            print "Whoops! Looks like we can't show that."
-        else:
-            print "We are having some problem. Make sure you have everything correct."
+            if r.status_code == 200:
+                print pretty_output(json.dumps(r.json()))
+            elif r.status_code == 403:
+                print "Whoops! Looks like we can't show that."
+            else:
+                print "We are having some problem. Make sure you have everything correct."
+        except TypeError:
+            print "whoops"
 
     else:
         r = requests.get(BASE_URL + 'leaders')
         print pretty_output(json.dumps(r.json()))
-
-# handle SIGINT
-def signal_handler(signal, frame):
-    """exit gracefully on keybord interrupt"""
-    sys.exit(0)
-
-
-if __name__ == "__main__":
-
-    # handle SIGINT
-    import signal
-    import sys
-
-    signal.signal(signal.SIGINT, signal_handler)
-
-    # run
-    get_user()
