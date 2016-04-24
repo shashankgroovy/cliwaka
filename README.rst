@@ -20,7 +20,7 @@ Usage
 -----
 `cliwaka` displays a help text when used with `-h` or `--help`.
 
-
+.. code-block:: python
     $ cliwaka -h
     usage: Cliwaka [-h] [-b] [-d] [-t] [-s] [--leaderboard] [-v] [-V]
 
@@ -37,7 +37,7 @@ Usage
     -V, --version    show program's version number and exit
 
     For more information see http://github.com/shashankgroovy/cliwaka
-        
+
 
 Upgrade
 ------------
