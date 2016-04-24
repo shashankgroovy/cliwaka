@@ -6,6 +6,7 @@ DEFAULT_CONFIG_FILE = os.path.join(str(os.environ.get('HOME')) or
                                    str(os.getenv("USERPROFILE")),
                                    ".wakacli.cfg")
 
+
 def get_config(token):
     """Get auth token values from the config file."""
 
@@ -41,14 +42,12 @@ def set_config(fields):
 def setup_config():
     """Initiate auth setup config."""
     print "Set up credentials."
-    api_key  = raw_input("Please Enter your Wakatime API KEY: ").strip()
+    api_key = raw_input("Please Enter your Wakatime API KEY: ").strip()
     set_config({'api_key': api_key})
     return api_key
 
 
 def update_api_key():
     """update with new api key"""
-    api_key  = raw_input("Please Enter your Wakatime API KEY: ")
+    api_key = raw_input("Please Enter your Wakatime API KEY: ")
     set_config({'api_key': api_key})
-
-
