@@ -7,20 +7,25 @@ It logs user's durations, heartbeats, stats, summary and more.
 Installation
 ------------
 
+::
+
     $ pip install cliwaka
 
 Or download from [source](https://github.com/shashankgroovy/cliwaka/archive/master.zip), `cd` to it and build using `python setup.py install`
 
 Requirements
 ------------
-* [Requests](https://pypi.python.org/pypi/requests) library
-* [Wakatime.com](https://wakatime.com) account and its api key
+
+* `Requests`_ library
+* `Wakatime.com`_ account and its api key
 
 Usage
 -----
+
 `cliwaka` displays a help text when used with `-h` or `--help`.
 
-.. code-block:: python
+::
+
     $ cliwaka -h
     usage: Cliwaka [-h] [-b] [-d] [-t] [-s] [--leaderboard] [-v] [-V]
 
@@ -38,13 +43,18 @@ Usage
 
     For more information see http://github.com/shashankgroovy/cliwaka
 
-
 Upgrade
 ------------
+
+::
 
     $ pip install -U cliwaka
 
 License
 -------
 
-Cliwaka is released under the [GNU GPL License v3](http://www.gnu.org/licenses/quick-guide-gplv3.html).
+Cliwaka is released under the `GNU GPL License v3`_
+
+.. _Requests: https://pypi.python.org/pypi/requests
+.. _Wakatime: https://wakatime.com
+.. _GNU GPL License v3: http://www.gnu.org/licenses/quick-guide-gplv3.html
