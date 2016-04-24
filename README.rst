@@ -1,7 +1,7 @@
 CLI Waka
 ========
 
-A command-line interface for [wakatime.com](https://wakatime.com).
+A command-line interface for `Wakatime.com`_ .
 It logs user's durations, heartbeats, stats, summary and more.
 
 Installation
@@ -11,7 +11,7 @@ Installation
 
     $ pip install cliwaka
 
-Or download from [source](https://github.com/shashankgroovy/cliwaka/archive/master.zip), `cd` to it and build using `python setup.py install`
+Or download from `source`_ , `cd` to it and build using `python setup.py install`
 
 Requirements
 ------------
@@ -56,5 +56,6 @@ License
 Cliwaka is released under the `GNU GPL License v3`_
 
 .. _Requests: https://pypi.python.org/pypi/requests
-.. _Wakatime: https://wakatime.com
+.. _Wakatime.com: https://wakatime.com
+.. _source: https://github.com/shashankgroovy/cliwaka/archive/master.zip
 .. _GNU GPL License v3: http://www.gnu.org/licenses/quick-guide-gplv3.html
