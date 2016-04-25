@@ -65,6 +65,6 @@ Cliwaka is released under the `GNU GPL License v3`_
 .. |pypi| image:: https://img.shields.io/pypi/v/cliwaka.svg
     :target: https://pypi.python.org/pypi/cliwaka
     :alt: Latest version released on PyPi
-.. |license| image:: https://img.shields.io/pypi/l/cliwaka.svg?maxAge=2592000
-    :target: http://www.gnu.org/licenses/quick-guide-gplv3.html
-    :alt: GNU GPLv3 License
+.. |license| image:: https://img.shields.io/badge/license-GPLv3-blue.svg
+    :target: https://raw.githubusercontent.com/shashankgroovy/cliwaka/master/LICENSE.txt
+    :alt: GPLv3 License
