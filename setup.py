@@ -37,7 +37,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'cliwaka=cliwaka:main',
+            'cliwaka=cliwaka.__main__:main',
         ],
     },
 )

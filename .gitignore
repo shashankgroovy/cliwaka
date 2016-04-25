@@ -1,6 +1,9 @@
-# python
 *.pyc
+*.egg-info
+
 
 # Vim swap files
 *.swp
 *.swo
+
+/dist
