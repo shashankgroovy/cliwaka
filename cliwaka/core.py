@@ -10,6 +10,7 @@ def signal_handler(signal, frame):
     """exit gracefully on keybord interrupt"""
     sys.exit(0)
 
+
 def main():
     """
     The main function.
@@ -25,8 +26,11 @@ def main():
             description="A command line tool for wakatime.com.",
             epilog="For more information see http://github.com/shashankgroovy/cliwaka")
 
-        parser.add_argument("-b", "--heartbeat", help="show user's latest heartbeat",
-                            action="store_true")
+        parser.add_argument(
+            "-b",
+            "--heartbeat",
+            help="show user's latest heartbeat",
+            action="store_true")
         parser.add_argument(
             "-d",
             "--duration",
@@ -37,13 +41,15 @@ def main():
         parser.add_argument("-s", "--summary", help="show user's logged time.",
                             action="store_true")
 
-        parser.add_argument("--leaderboard", help="display the public leaderboard",
-                            action="store_true")
+        parser.add_argument(
+            "--leaderboard",
+            help="display the public leaderboard",
+            action="store_true")
 
-        parser.add_argument( "-v", "--verbose",
+        parser.add_argument("-v", "--verbose",
                             help="toggle verbose on (default is off)",
                             action="store_true")
-        parser.add_argument( '-V', '--version',
+        parser.add_argument('-V', '--version',
                             action='version', version='%(prog)s 0.1')
         args = parser.parse_args()
 
