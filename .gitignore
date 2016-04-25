@@ -1,9 +1,8 @@
+# python packaging
 *.pyc
 *.egg-info
-
+/dist
 
 # Vim swap files
 *.swp
 *.swo
-
-/dist

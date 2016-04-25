@@ -27,7 +27,6 @@ setup(
     keywords='wakatime cli tool',
     url='https://github.com/shashankgroovy/cliwaka',
     download_url='https://github.com/shashankgroovy/cliwaka/archive/master.zip',
-    website='https://github.com/shashankgroovy/cliwaka',
 
     packages=find_packages(),
     install_requires=[
